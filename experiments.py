@@ -1,14 +1,15 @@
 import os
 import subprocess
 
-data_path = '/global_data/gottesbueren/anns'
+data_path = '/ssd1/anndata/gist1m'
 
 metrics = {
     'spacev' : 'L2',
     'sift1B' : 'L2',
     'turing' : 'L2',
     'deep' : 'L2',
-    'text-to-image' : 'mips'
+    'text-to-image' : 'mips',
+    'gist': 'L2'
 }
 
 file_ending = {
@@ -16,23 +17,25 @@ file_ending = {
     'sift1B' : '.u8bin',
     'turing' : '.fbin',
     'deep' : '.fbin',
-    'text-to-image' : '.fbin'
+    'text-to-image' : '.fbin',
+    'gist': '.fbin'
 }
 
 datasets = [
  #   'spacev', 
-    'sift1B', 
+    # 'sift1B', 
  #   'turing', 
  #   'deep', 
- #   'text-to-image'
+ #   'text-to-image',
+   'gist',
 ]
 
 partitioning_methods = [
-    'GP', 
+    # 'GP', 
     #'KMeans',
-    'BalancedKMeans',
-    #'OGP',
-    #'OGPS',
+    # 'BalancedKMeans',
+    'OGP',
+    'OGPS',
     #'OBKM',
     #'OKM',
     #'Pyramid',
@@ -41,7 +44,7 @@ partitioning_methods = [
     # 'OurPyramid'
 ]
 
-num_shards_vals = [40]  # , 20, 10]
+num_shards_vals = [8]  # , 20, 10]
 
 overlap_values = [0.2, 0.0]
 
@@ -110,4 +113,4 @@ def run_queries_on_all_datasets():
 
 
 compute_all_partitions()
-#run_queries_on_all_datasets()
+run_queries_on_all_datasets()
